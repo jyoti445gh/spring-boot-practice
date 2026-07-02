@@ -1,9 +1,29 @@
 package org.example;
 
-//TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
-// click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
+
+
 public class Main {
     public static void main(String[] args) {
 
+        ClassPathXmlApplicationContext context =
+                new ClassPathXmlApplicationContext("appConfig.xml");
+
+        // get bean by id/name
+        //OrderService orderService = (OrderService) context.getBean("orderService");
+
+        //get bean by type
+        //OrderService orderService = context.getBean(OrderService.class);
+
+//        OrderService orderService =
+//                context.getBean("orderService" ,OrderService.class);
+//
+//        orderService.placeOrder();
+
+        UserService user = context.getBean(UserService.class);
+
+        context.close();
     }
 }
